@@ -3,7 +3,7 @@
   transform: translateX(-50%);
   background: radial-gradient(
       at 71% 77%,
-      var(--color-gradient-1) 0,
+      var(--color-gradient-2) 0,
       transparent 21%
     ),
     radial-gradient(at 36% 47%, var(--color-gradient-3) 0, transparent 50%),
@@ -27,7 +27,7 @@
   transform: translateX(-50%) rotate(190deg);
   background: radial-gradient(
       at 83% 25%,
-      var(--color-gradient-1) 0,
+      var(--color-gradient-2) 0,
       transparent 21%
     ),
     radial-gradient(at 36% 47%, var(--color-gradient-3) 0, transparent 50%),
