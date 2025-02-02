@@ -17,6 +17,7 @@ export default function Index({ posts, globalData }) {
         <h1 className="mb-12 text-3xl text-center lg:text-5xl">
           {globalData.blogTitle}
         </h1>
+        <Link href={`/`}>Page2</Link>
         <ul className="w-full">
           {posts.map((post) => (
             <li
