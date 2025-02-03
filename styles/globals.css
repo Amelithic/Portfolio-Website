@@ -3,6 +3,7 @@
 @tailwind utilities;
 @tailwind variants;
 
+/*Move all to separate blog.css file - save global for separate use, also look tor src of css vars*/
 h1,
 h2,
 h3,
