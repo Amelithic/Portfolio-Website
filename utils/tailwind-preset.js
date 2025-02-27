@@ -1,3 +1,5 @@
+//TODO: remove and replace with custom css
+
 const plugin = require('tailwindcss/plugin');
 const pluginTypography = require('@tailwindcss/typography');
 const { COLOR_THEMES, FONT_THEMES } = require('../themes');

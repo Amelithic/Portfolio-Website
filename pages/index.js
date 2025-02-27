@@ -1,3 +1,4 @@
+//TODO: Set home page and separate blog page
 import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
 
@@ -11,20 +12,20 @@ import SEO from '../components/SEO';
 export default function Index({ posts, globalData }) {
   return (
     <Layout>
-      <SEO title={globalData.name} description={globalData.blogTitle} />
+      <SEO title={globalData.name} description={globalData.blogTitle}/>
       <Header name={globalData.name} />
       <main className="w-full">
         <h1 className="mb-12 text-3xl text-center lg:text-5xl">
           {globalData.blogTitle}
         </h1>
         <ul className="w-full">
-          {posts.map((post) => (
+          {posts.map((post) => ( //function, posts is defined in getStaticProps
             <li
               key={post.filePath}
               className="transition bg-white border border-b-0 border-gray-800 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 dark:border-white border-opacity-10 dark:border-opacity-10 last:border-b hover:border-b hovered-sibling:border-t-0" data-sb-object-id={`posts/${post.filePath}`}
             >
               <Link
-                as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
+                as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`} //changes mdx route to website dynamic route
                 href={`/posts/[slug]`}
                 className="block px-6 py-6 lg:py-10 lg:px-16 focus:outline-none focus:ring-4">
 
@@ -60,8 +61,8 @@ export default function Index({ posts, globalData }) {
 }
 
 export function getStaticProps() {
-  const posts = getPosts();
-  const globalData = getGlobalData();
+  const posts = getPosts(); //mdx-utils.js
+  const globalData = getGlobalData(); //global-data.js
 
-  return { props: { posts, globalData } };
+  return { props: { posts, globalData } }; //dictionary of arrays?
 }
