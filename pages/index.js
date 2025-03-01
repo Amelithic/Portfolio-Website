@@ -1,3 +1,4 @@
+//TODO: REMOVE UNDERSCORE FROM BLINKING TEXT AND IMPROVE TIMING: DOESNT START QUICK ENOUGH
 import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
 import styles from '../styles/index.module.css';
@@ -96,7 +97,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
           <div id={styles.heroLeft}>
             <p>Hi! I am</p>
             <h1 id={styles.myName}>Amelie</h1>
-            <p id="careerPrefix">I'm a...</p>
+            <p id="careerPrefix">I&apos;m a...</p>
             <h2 id={styles.careerTitle} className="careerTitle"></h2>
           </div>
           <div id={styles.heroRight}>
