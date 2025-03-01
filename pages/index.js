@@ -5,11 +5,12 @@ import styles from '../styles/index.module.css';
 import Image from 'next/image';
 import profilePic from '../public/images/portrait.jpg'
 
+import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import SocialLinks from '../components/SocialLinks.js';
 import Layout, { GradientBackground } from '../components/Layout';
 import { getGlobalData } from '../utils/global-data';
-import SEO from '../components/SEO';
 import { useEffect, useState } from 'react';
 
 const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, initialCareerPrefix, careers }) => {
@@ -85,7 +86,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
 
     const interval = setInterval(updateCareerTitle, 6000);
     return () => clearInterval(interval);
-  }, [careerIndex]); // Depend on `careerIndex` to update state properly
+  }, [careerIndex, careers]); // Depend on `careerIndex` to update state properly
   //end useEffect
 
   return (
@@ -96,12 +97,17 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
         <section id={styles.hero} className={styles.indexItems}>
           <div id={styles.heroLeft}>
             <p>Hi! I am</p>
-            <h1 id={styles.myName}>Amelie</h1>
+            <h1 id={styles.myName}>Amelie McCarthy</h1>
             <p id="careerPrefix">I&apos;m a...</p>
-            <h2 id={styles.careerTitle} className="careerTitle"></h2>
+            <div id={styles.careerTitleContainer}>
+              <h2 id={styles.careerTitle} className="careerTitle"></h2>
+            </div>
           </div>
           <div id={styles.heroRight}>
-            <Image src={profilePic} alt="Photo of Me" className={styles.profileImg}/>
+            <div className={styles.profileImg}>
+              <Image src={profilePic} alt="Photo of Me"/>
+            </div>
+            <SocialLinks />
           </div>
         </section>
 

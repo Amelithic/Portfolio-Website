@@ -85,10 +85,10 @@ nav>ul{
   justify-content: space-evenly;
   list-style: none;
   padding-right: 10pt;
+  gap: 16px;
 }
 nav>ul>li {
   align-content: center;
-  margin-right: 16px;
 }
 nav>ul>li>#menu-icon {
   margin-top: -4px;
@@ -125,6 +125,9 @@ footer {
     display: none;
     visibility: hidden;
   }
+  nav, footer, header, main {
+    width:100%;
+  }
 }
 
 @media only screen and (max-width:800px) {
@@ -134,4 +137,7 @@ footer {
   nav>ul>li #menu-icon {
     display: block;
   }
+  section {
+    width:100vw;
+}
 }

@@ -14,9 +14,10 @@
 }
 
 section#hero {
-    background-image: url("../public/images/hero.jpg");
+    background: linear-gradient(transparent 40%, var(--main-bg)), url("../public/images/hero.jpg");
+    background-size: cover; 
     background-repeat: no-repeat;
-    background-size: 100% 800px;
+    background-size: 100% 100%;
   
     min-height: 550px;
     width: 100%;
@@ -42,16 +43,33 @@ section#hero {
 }
 #heroLeft #myName {
     font-size:40pt;
+    font-family: serif;
+    margin: 5px 0px;
 }
 #heroLeft #careerTitle {
-    font-size: 32pt;
+    font-size: 30pt;
     font-family: monospace;
 }
 
-#heroRight .profileImg {
-    max-height: 300pt;
-    width:auto;
+#heroLeft #careerTitleContainer {
+    background-color: var(--main-bg);
+    border-radius: 15px;
+    padding: 10pt 15pt;
+    margin: 10pt 50pt 10pt 0;
+    min-height:55pt;
 }
+
+#heroRight .profileImg {
+    width:400pt;
+}
+#heroRight .profileImg img {
+    width:100%;
+    height:100%;
+}
+
+
+
+/*RESPONSIVE CSS*/
 
 @media only screen and (max-width:800px) {
     section#hero {
@@ -70,6 +88,10 @@ section#hero {
         align-items: left;
         padding: 30pt 0pt 30pt 50pt;
     }
+    #heroLeft #careerTitleContainer {
+        width:max-content;
+    }
+
     #heroRight {
         flex-wrap: wrap;
         width: 100%;
@@ -77,6 +99,10 @@ section#hero {
     #heroRight .profileImg {
         min-height:80pt;
         max-width:100%;
+        align-items: end;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 
 }
+
