@@ -1,0 +1,118 @@
+/* theme-dark.css */
+:root {
+  --accent-color: #5c4a84;
+  --accent-color2: #9682c2;
+  --text-color: #ddd;
+  --main-bg: #222225;
+  --card-bg: #313136;
+  --card-shadow: #1f1f20;
+  /* other variables for dark theme */
+}
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+body {
+  width: 100%;
+  height: auto;
+  margin:0;
+  background: var(--main-bg);
+}
+h1 {
+  padding-left: 15pt;
+  margin-top:-8pt;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--accent-color2);
+}
+#site-name {
+  text-decoration: none;
+  font-family: 'Rock Salt', sans-serif;
+  font-weight: 800;
+  color: var(--text-color);
+  font-size: 26px;
+  transition: 0.2s;
+}
+
+#site-name:hover {
+  font-size: 102%;
+  color:#2c204d !important;
+  transition: 0.2s;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+}
+
+main, .card {
+  padding: 20px 100px;
+  min-height:460px;
+  background: var(--card-bg);
+}
+
+footer, nav { 
+  background-color: var(--accent-color);
+  width: 100%;
+  min-height:50px;
+  display: flex;
+}
+
+nav {
+  justify-content: space-between;
+  max-height: 60px;
+  position: sticky;
+  overflow: hidden;
+  top: 0;
+}
+
+nav>ul{
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding-right: 10pt;
+}
+nav>ul>li {
+  align-content: center;
+  margin-right: 16px;
+}
+nav>ul>li>#menu-icon {
+  margin-top: -4px;
+}
+nav>ul>li a{
+  color: var(--text-color);
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 400;
+  transition: 0.2s;
+}
+nav>ul>li a:after {
+  content: '';
+  width: 0;
+  background-color: var(--accent-color2);
+  display: block;
+  height: 3px;
+  transition: width 0.3s ease;
+}
+nav>ul>li a:hover::after {
+  width: 100%;
+}
+
+footer {
+  justify-content: center;
+}

@@ -1,0 +1,23 @@
+.indexContainer {
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg);
+}
+
+.indexItems {
+    width: 100%;
+    height: auto;
+    background-color: var(--card-bg);
+}
+
+section#hero {
+    background-image: url("../public/images/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+  
+    min-height: 550px;
+    width: 100%;
+}
