@@ -14,7 +14,7 @@
 }
 
 section#hero {
-    background: linear-gradient(transparent 40%, var(--main-bg)), url("../public/images/hero.jpg");
+    background: linear-gradient(transparent 40%, var(--main-bg) 90%), url("../public/images/hero.jpg");
     background-size: cover; 
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -44,7 +44,7 @@ section#hero {
 #heroLeft #myName {
     font-size:40pt;
     font-family: serif;
-    margin: 5px 0px;
+    margin: 5px 0px 20px 0px;
 }
 #heroLeft #careerTitle {
     font-size: 30pt;
@@ -60,11 +60,46 @@ section#hero {
 }
 
 #heroRight .profileImg {
+    align-items: right;
     width:400pt;
 }
 #heroRight .profileImg img {
     width:100%;
     height:100%;
+}
+
+#passion {
+    background: linear-gradient(transparent 40%, var(--card-bg) 90%), var(--main-bg);
+    padding: 50px 50pt;
+    justify-content: center;
+}
+#passion p  {
+    font-size:22pt;
+}
+.titleEmphasised {
+    font-size:50pt;
+    font-family: serif;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+.centralText {
+    text-align: center;
+}
+#creativity {
+    margin-top: 20pt;
+    margin-left: 60pt;
+}
+#technology {
+    text-align: right;
+    margin-right: 60pt;
+}
+
+#projects {
+    background: var(--card-bg);
+}
+#projects h1 {
+    text-align: center;
+
 }
 
 
@@ -87,6 +122,9 @@ section#hero {
     #heroLeft {
         align-items: left;
         padding: 30pt 0pt 30pt 50pt;
+    }
+    #heroLeft #careerTitle {
+        font-size:22pt;
     }
     #heroLeft #careerTitleContainer {
         width:max-content;

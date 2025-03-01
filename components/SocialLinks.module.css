@@ -15,3 +15,12 @@
 .socialIcons:hover {
     fill: var(--accent-color);
 }
+
+@media only screen and (max-width:800px) {
+    #socialLinks {
+        padding: 15pt 0 30pt 0;
+    }
+    #socialLinks ul {
+        justify-content: center;
+    }
+}

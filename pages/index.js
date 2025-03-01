@@ -111,15 +111,29 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
           </div>
         </section>
 
-        <section className={styles.indexItems}>
-          <p>section 2: skills</p>
+        <section id={styles.passion} className={styles.indexItems}>
+          <p>I like to explore where</p>
+          <h1 className={styles.titleEmphasised} id={styles.creativity}>Creativity</h1>
+          <p className={styles.centralText}>meets</p>
+          <h1 className={styles.titleEmphasised} id={styles.technology}>Technology</h1>
+        </section>
+
+        <section id={styles.projects} className={styles.indexItems}>
+          <h1>Projects</h1>
+          <div className="projectItem">
+            <Image src={profilePic} alt="Project image" className={styles.projectImg}/>
+            <div className={styles.projectInfo}>
+              <h3 className={styles.projectTitle}></h3>
+              <p className={styles.projectDate}></p>
+              <p className={styles.projectDesc}></p>
+            </div> 
+          </div>
+          <div className="projectItem">2</div>
+          <div className="projectItem">3</div>
         </section>
 
         <section className={styles.indexItems}>
-          <p>section 3: projects</p>
-        </section>
-
-        <section className={styles.indexItems}>
+        <p>section 2: skills</p>
           <p>section 4: blog</p>
         </section>
 
@@ -128,7 +142,6 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
         </section>
 
       </main>
-      <div style={{ height: '500px' }} />
       <Footer copyrightText={globalData.footerText} />
 
     </Layout>
