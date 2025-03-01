@@ -6,6 +6,7 @@ export default function SEO({ title, description }) {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </Head>
   );
 }

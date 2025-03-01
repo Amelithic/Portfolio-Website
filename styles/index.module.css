@@ -16,8 +16,67 @@
 section#hero {
     background-image: url("../public/images/hero.jpg");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 100% 800px;
   
     min-height: 550px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#heroLeft, #heroRight {
+    flex-basis: 50%;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#heroLeft {
+    align-items: left;
+    padding-left: 50pt;
+}
+
+#heroLeft p {
+    font-size:28pt;
+}
+#heroLeft #myName {
+    font-size:40pt;
+}
+#heroLeft #careerTitle {
+    font-size: 32pt;
+    font-family: monospace;
+}
+
+#heroRight .profileImg {
+    max-height: 300pt;
+    width:auto;
+}
+
+@media only screen and (max-width:800px) {
+    section#hero {
+        max-height: (100vh-60px);
+        overflow: hidden;
+        flex-direction: column;
+    }    
+    #heroLeft, #heroRight {
+        height:50%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    #heroLeft {
+        align-items: left;
+        padding: 30pt 0pt 30pt 50pt;
+    }
+    #heroRight {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    #heroRight .profileImg {
+        min-height:80pt;
+        max-width:100%;
+    }
+
 }

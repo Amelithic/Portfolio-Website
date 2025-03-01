@@ -59,7 +59,7 @@ header {
   text-align: center;
 }
 
-main, .card {
+main {
   padding: 20px 100px;
   min-height:460px;
   background: var(--card-bg);
@@ -76,8 +76,8 @@ nav {
   justify-content: space-between;
   max-height: 60px;
   position: sticky;
-  overflow: hidden;
   top: 0;
+  overflow: hidden;
 }
 
 nav>ul{
@@ -115,4 +115,23 @@ nav>ul>li a:hover::after {
 
 footer {
   justify-content: center;
+}
+
+@media only screen and (min-width:800px) {
+  nav>ul>li a {
+    display: inline;
+  }
+  nav>ul>li #menu-icon {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-width:800px) {
+  nav>ul>li a {
+    display: none;
+  }
+  nav>ul>li #menu-icon {
+    display: block;
+  }
 }
