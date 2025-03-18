@@ -14,10 +14,133 @@
 }
 
 section#hero {
-    background-image: url("../public/images/hero.jpg");
+    background: linear-gradient(transparent 40%, var(--main-bg) 90%), url("../public/images/hero.jpg");
+    background-size: cover; 
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 100% 100%;
   
     min-height: 550px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
+
+#heroLeft, #heroRight {
+    flex-basis: 50%;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#heroLeft {
+    align-items: left;
+    padding-left: 50pt;
+}
+
+#heroLeft p {
+    font-size:28pt;
+}
+#heroLeft #myName {
+    font-size:40pt;
+    font-family: serif;
+    margin: 5px 0px 20px 0px;
+}
+#heroLeft #careerTitle {
+    font-size: 30pt;
+    font-family: monospace;
+}
+
+#heroLeft #careerTitleContainer {
+    background-color: var(--main-bg);
+    border-radius: 15px;
+    padding: 10pt 15pt;
+    margin: 10pt 50pt 10pt 0;
+    min-height:55pt;
+}
+
+#heroRight .profileImg {
+    align-items: right;
+    width:400pt;
+}
+#heroRight .profileImg img {
+    width:100%;
+    height:100%;
+}
+
+#passion {
+    background: linear-gradient(transparent 40%, var(--card-bg) 90%), var(--main-bg);
+    padding: 50px 50pt;
+    justify-content: center;
+}
+#passion p  {
+    font-size:22pt;
+}
+.titleEmphasised {
+    font-size:50pt;
+    font-family: serif;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+.centralText {
+    text-align: center;
+}
+#creativity {
+    margin-top: 20pt;
+    margin-left: 60pt;
+}
+#technology {
+    text-align: right;
+    margin-right: 60pt;
+}
+
+#projects {
+    background: var(--card-bg);
+}
+#projects h1 {
+    text-align: center;
+
+}
+
+
+
+/*RESPONSIVE CSS*/
+
+@media only screen and (max-width:800px) {
+    section#hero {
+        max-height: (100vh-60px);
+        overflow: hidden;
+        flex-direction: column;
+    }    
+    #heroLeft, #heroRight {
+        height:50%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    #heroLeft {
+        align-items: left;
+        padding: 30pt 0pt 30pt 50pt;
+    }
+    #heroLeft #careerTitle {
+        font-size:22pt;
+    }
+    #heroLeft #careerTitleContainer {
+        width:max-content;
+    }
+
+    #heroRight {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    #heroRight .profileImg {
+        min-height:80pt;
+        max-width:100%;
+        align-items: end;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+}
+

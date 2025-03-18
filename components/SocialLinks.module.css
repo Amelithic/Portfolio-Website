@@ -1,0 +1,26 @@
+#socialLinks {
+    padding: 15pt 50pt 30pt 0;
+}
+
+#socialLinks ul {
+    justify-content: end;
+    list-style: none;
+    display: flex;
+    flex: wrap row;
+    gap: 15pt;
+}
+#socialLinks ul li a {
+    text-decoration: none;
+}
+.socialIcons:hover {
+    fill: var(--accent-color);
+}
+
+@media only screen and (max-width:800px) {
+    #socialLinks {
+        padding: 15pt 0 30pt 0;
+    }
+    #socialLinks ul {
+        justify-content: center;
+    }
+}
