@@ -22,15 +22,18 @@
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
+    "autoprefixer": "^10.4.21",
     "classnames": "^2.3.1",
     "gray-matter": "^4.0.3",
     "next": "^15.1.4",
     "next-mdx-remote": "^5.0.0",
     "next-remote-watch": "2.0.0",
+    "postcss": "^8.5.3",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "@stackbit/cms-git": "^0.0.14",
