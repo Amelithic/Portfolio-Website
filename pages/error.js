@@ -10,7 +10,7 @@ export default function Error({ globalData }) {
             <SEO title={globalData.name} description={globalData.blogTitle} />
             <Header name={globalData.name} />
             <main className="w-full">
-                <p style="color: red !important;">Error</p>
+                <p style={{color: 'red !important'}}>Error</p>
             </main>
 
             <Footer copyrightText={globalData.footerText} />
