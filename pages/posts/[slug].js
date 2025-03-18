@@ -9,7 +9,7 @@ import {
 import { MDXRemote } from 'next-mdx-remote';
 import Head from 'next/head';
 import Link from 'next/link';
-import ArrowIcon from '../../components/ArrowIcon';
+import ArrowIcon from '../../components/icons/ArrowIcon';
 import CustomImage from '../../components/CustomImage';
 import CustomLink from '../../components/CustomLink';
 import Footer from '../../components/Footer';
