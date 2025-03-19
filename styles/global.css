@@ -1,10 +1,15 @@
 /* theme-dark.css */
 :root {
-  --accent-color: #5c4a84;
-  --accent-color2: #9682c2;
+  --accent-color: rgb(26, 13, 53, 0.8);
+  --accent-color10: rgb(26, 13, 53, 0.6);
+  --accent-color1: rgb(26, 13, 53);
+  --accent-color2: #5831c4;
+  --accent-color20: rgb(82, 53, 161, 0.8);
+  --statement: #8973ee;
   --text-color: #ddd;
   --main-bg: #222225;
   --card-bg: #313136;
+  --card-bg-transparent: rgb(49, 49, 54, 0.8);
   --card-shadow: #1f1f20;
   /* other variables for dark theme */
 }
@@ -24,29 +29,32 @@
 body {
   width: 100%;
   height: auto;
-  margin:0;
-  background: var(--main-bg);
+  margin: 0;
+  background: url('../public/images/hero.png') black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
+
 h1 {
-  margin-top:-8pt;
+  margin-top: -8pt;
   font-size: 36px;
   font-weight: 600;
-  color: var(--accent-color2);
+  color: var(--statement);
 }
+
 #site-name {
-  padding-left: 15pt;
-  text-decoration: none;
-  font-family: 'Rock Salt', sans-serif;
-  font-weight: 800;
-  color: var(--text-color);
-  font-size: 26px;
+  margin-left: -48pt;
   transition: 0.2s;
 }
 
 #site-name:hover {
-  font-size: 102%;
-  color:#2c204d !important;
+  transform: scale(1.05);
   transition: 0.2s;
+}
+
+svg#site-name:hover path {
+  fill: #5c4a84;
 }
 
 h2 {
@@ -57,43 +65,46 @@ h2 {
 header {
   width: 100%;
   text-align: center;
+  position: sticky;
+  top: 0;
 }
 
 main {
   padding: 20px 100px;
-  min-height:460px;
-  background: var(--card-bg);
+  min-height: 460px;
+  /*background: var(--card-bg-transparent);*/
 }
 
-footer, nav { 
+footer,
+nav {
   background-color: var(--accent-color);
   width: 100%;
-  min-height:50px;
+  min-height: 50px;
   display: flex;
 }
 
 nav {
   justify-content: space-between;
   max-height: 60px;
-  position: sticky;
-  top: 0;
-  overflow: hidden;
 }
 
-nav>ul{
+nav>ul {
   display: flex;
   justify-content: space-evenly;
   list-style: none;
   padding-right: 10pt;
   gap: 16px;
 }
+
 nav>ul>li {
   align-content: center;
 }
-nav>ul>li>#menu-icon {
+
+nav>ul>li>#menuIcon {
   margin-top: -4px;
 }
-nav>ul>li a{
+
+nav>ul>li a {
   color: var(--text-color);
   font-size: 18px;
   text-decoration: none;
@@ -101,6 +112,7 @@ nav>ul>li a{
   font-weight: 400;
   transition: 0.2s;
 }
+
 nav>ul>li a:after {
   content: '';
   width: 0;
@@ -109,6 +121,7 @@ nav>ul>li a:after {
   height: 3px;
   transition: width 0.3s ease;
 }
+
 nav>ul>li a:hover::after {
   width: 100%;
 }
@@ -121,12 +134,12 @@ footer {
   nav>ul>li a {
     display: inline;
   }
-  nav>ul>li #menu-icon {
-    display: none;
-    visibility: hidden;
-  }
-  nav, footer, header, main {
-    width:100%;
+
+  nav,
+  footer,
+  header,
+  main {
+    width: 100%;
   }
 }
 
@@ -134,10 +147,12 @@ footer {
   nav>ul>li a {
     display: none;
   }
+
   nav>ul>li #menu-icon {
     display: block;
   }
+
   section {
-    width:100vw;
-}
+    width: 100vw;
+  }
 }
