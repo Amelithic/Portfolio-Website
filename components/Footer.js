@@ -1,4 +1,7 @@
 //TODO: Add footer section
+import LogoMain from './icons/LogoMain';
+import styles from './Footer.module.css';
+
 
 const sunIcon = (
   <svg
@@ -82,6 +85,7 @@ const ThemeSwitcher = () => {
 export default function Footer({ copyrightText }) {
   return (
     <footer>
+      <LogoMain />
       <p>
         {copyrightText}
       </p>

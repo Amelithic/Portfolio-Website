@@ -4,22 +4,19 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: var(--main-bg);
 }
 
 .indexItems {
     width: 100%;
     height: auto;
-    background-color: var(--card-bg);
 }
 
 section#hero {
-    background: linear-gradient(transparent 40%, var(--main-bg) 90%), url("../public/images/hero.jpg");
     background-size: cover; 
     background-repeat: no-repeat;
     background-size: 100% 100%;
   
-    min-height: 550px;
+    min-height: 650px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -35,7 +32,7 @@ section#hero {
 
 #heroLeft {
     align-items: left;
-    padding-left: 50pt;
+    padding-left: 100pt;
 }
 
 #heroLeft p {
@@ -52,7 +49,7 @@ section#hero {
 }
 
 #heroLeft #careerTitleContainer {
-    background-color: var(--main-bg);
+    background-color: var(--accent-color);
     border-radius: 15px;
     padding: 10pt 15pt;
     margin: 10pt 50pt 10pt 0;
@@ -60,16 +57,26 @@ section#hero {
 }
 
 #heroRight .profileImg {
-    align-items: right;
-    width:400pt;
-}
-#heroRight .profileImg img {
-    width:100%;
-    height:100%;
+    width:300pt;
+    height:300pt;
+    border-radius: 50%;
+    margin:auto;
+    padding:auto;
+
+    background: url("../public/images/portrait.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position-y: -20pt;
+    background-position-x: -20pt;
+    background-size: 108% auto;
 }
 
 #passion {
-    background: linear-gradient(transparent 40%, var(--card-bg) 90%), var(--main-bg);
+    background: var(--accent-color10);
+    border-radius: 10pt;
+    width:95%;
+    margin:auto;
+    margin-bottom:50pt;
     padding: 50px 50pt;
     justify-content: center;
 }
@@ -95,11 +102,45 @@ section#hero {
 }
 
 #projects {
-    background: var(--card-bg);
+    background: linear-gradient(transparent, var(--accent-color) 90%);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 }
 #projects h1 {
     text-align: center;
+}
 
+.projectContainer {
+    width:100%;
+    height:auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-bottom:30px;
+}
+
+.projectItem {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 20px;
+    flex-basis: 300px;
+    flex-shrink: 0.8;
+
+    overflow: hidden;
+    height:400px;
+    border: 1px solid red;
+    border-radius: 15pt;
+}
+.projectItem:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.397);
+}
+
+.projectItem .projectContent {
+    flex-grow: 0.5;
 }
 
 

@@ -26,7 +26,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
 
     function typeWriter(txt, speed) {
       if (!txt) return; //Prevents 'undefined'
-      
+
       let i = 0;
       careerTitleElement.innerHTML = ''; // Clear previous text
 
@@ -42,7 +42,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
 
       function blinkCursor() {
         let visible = true; // Tracks the visibility of the underscore
-  
+
         setTimeout(() => {
           if (visible) {
             careerTitleElement.innerHTML += "_"; //Shows the underscore
@@ -91,7 +91,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
 
   return (
     <Layout>
-      <SEO title={globalData.name} description={globalData.blogTitle}/>
+      <SEO title={globalData.name} description={globalData.blogTitle} />
       <Header name={globalData.name} />
       <main className={styles.indexContainer}>
         <section id={styles.hero} className={styles.indexItems}>
@@ -105,7 +105,6 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
           </div>
           <div id={styles.heroRight}>
             <div className={styles.profileImg}>
-              <Image src={profilePic} alt="Photo of Me"/>
             </div>
             <SocialLinks />
           </div>
@@ -120,20 +119,38 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
 
         <section id={styles.projects} className={styles.indexItems}>
           <h1>Projects</h1>
-          <div className="projectItem">
-            <Image src={profilePic} alt="Project image" className={styles.projectImg}/>
-            <div className={styles.projectInfo}>
-              <h3 className={styles.projectTitle}></h3>
-              <p className={styles.projectDate}></p>
-              <p className={styles.projectDesc}></p>
-            </div> 
+          <div className={styles.projectContainer}>
+            <div className={styles.projectItem}>
+              <div className={[styles.projectImg, styles.projectContent]}>
+                <Image src={profilePic} alt="Project image" className={styles.projectImg} />
+              </div>
+              <div className={[styles.projectInfo, styles.projectContent]}>
+                <h3 className={styles.projectTitle}>projectTitle</h3>
+                <p className={styles.projectDate}>3/3/25</p>
+                <p className={styles.projectDesc}>Description here</p>
+              </div>
+            </div>
+            <div className={styles.projectItem}>
+              <Image src={profilePic} alt="Project image" className={styles.projectImg} />
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>projectTitle</h3>
+                <p className={styles.projectDate}>3/3/25</p>
+                <p className={styles.projectDesc}>Description here</p>
+              </div>
+            </div>
+            <div className={styles.projectItem}>
+              <Image src={profilePic} alt="Project image" className={styles.projectImg} />
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>projectTitle</h3>
+                <p className={styles.projectDate}>3/3/25</p>
+                <p className={styles.projectDesc}>Description here</p>
+              </div>
+            </div>
           </div>
-          <div className="projectItem">2</div>
-          <div className="projectItem">3</div>
         </section>
 
         <section className={styles.indexItems}>
-        <p>section 2: skills</p>
+          <p>section 2: skills</p>
           <p>section 4: blog</p>
         </section>
 
@@ -157,8 +174,8 @@ function setCareerTitles(index) {
   if ((careerTitle.startsWith('A')) || (careerTitle.startsWith('E')) || (careerTitle.startsWith('I')) || (careerTitle.startsWith('O'))) {
     careerPrefix = 'an';
   }
-  console.log([careerPrefix,careerTitle]);
-  return [careerPrefix,careerTitle];
+  console.log([careerPrefix, careerTitle]);
+  return [careerPrefix, careerTitle];
 }
 
 export function getStaticProps() {
@@ -174,7 +191,7 @@ export function getStaticProps() {
   } else {
     initialCareerPrefix = 'a';
   }
-  console.log([initialCareerPrefix,initialCareerTitle]);
+  console.log([initialCareerPrefix, initialCareerTitle]);
 
   return {
     props: {
