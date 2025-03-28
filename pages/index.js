@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
 import styles from '../styles/index.module.css';
 import Image from 'next/image';
-import profilePic from '../public/images/portrait.jpg'
+import profilePic from '../public/images/random-image.jpeg'
 
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
@@ -12,6 +12,9 @@ import SocialLinks from '../components/SocialLinks.js';
 import Layout, { GradientBackground } from '../components/Layout';
 import { getGlobalData } from '../utils/global-data';
 import { useEffect, useState } from 'react';
+
+const techImg = ['/public/images/tech-1.png','/../public/images/tech-2.png','/../public/images/tech-3.png'];
+
 
 const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, initialCareerPrefix, careers }) => {
   const [careerIndex, setCareerIndex] = useState(initialCareerIndex);
@@ -110,40 +113,89 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
           </div>
         </section>
 
-        <section id={styles.passion} className={styles.indexItems}>
-          <p>I like to explore where</p>
-          <h1 className={styles.titleEmphasised} id={styles.creativity}>Creativity</h1>
-          <p className={styles.centralText}>meets</p>
-          <h1 className={styles.titleEmphasised} id={styles.technology}>Technology</h1>
+        <section id={styles.about} className={styles.indexItems}>
+          <h1 className={styles.sectionTitle}>About me...</h1>
+          <div className={styles.aboutContainer}>
+            <div className={styles.aboutItem}>
+              <Image />
+            </div>
+            <div className={styles.aboutItem}>
+              <p>text about self</p>
+            </div>
+          </div> <br />
+
+          <h1 className={styles.sectionTitle}>Skills</h1>
+          <div className={styles.aboutContainer}>
+            <div className={styles.aboutItem}>
+              <p>text</p>
+            </div>
+            <div className={styles.aboutItem}>
+              <ul>
+                <li>list items</li>
+                <li>list items</li>
+                <li>list items</li>
+                <li>list items</li>
+              </ul>
+            </div>
+          </div>
+
         </section>
 
         <section id={styles.projects} className={styles.indexItems}>
           <h1>Projects</h1>
-          <div className={styles.projectContainer}>
-            <div className={styles.projectItem}>
-              <div className={[styles.projectImg, styles.projectContent]}>
-                <Image src={profilePic} alt="Project image" className={styles.projectImg} />
+          <div class={styles.projectContainer}>
+            <div class={styles.projectItem}>
+            <div class={styles.projectItemText}>
+                <h3>Personal Portfolio Website <span>(In Progress)</span></h3>
+                <p>Started in February, I&apos;ve been building my own portfolio website using the NextJS and React
+                  frameworks. Similar to this website, it will show my projects and links to work I&apos;ve done!
+                </p>
+                <p class={styles.projectItemDate}>25/02/2025</p>
+                <p class={styles.projectItemLink}><a href="https://github.com/Amelithic/Portfolio-Website">Link to
+                  Github repo</a></p>
+                <p class={styles.projectItemLink}><a href="https://amelithic.com/">Link to Website</a></p>
               </div>
-              <div className={[styles.projectInfo, styles.projectContent]}>
-                <h3 className={styles.projectTitle}>projectTitle</h3>
-                <p className={styles.projectDate}>3/3/25</p>
-                <p className={styles.projectDesc}>Description here</p>
+              <div class={styles.projectItemImg}>
+                <figure>
+                  <Image src={techImg[0]} alt="Thumbnail image" width={100} height={100}/>
+                    <figcaption>Figure 1: Website screenshot of an animated front page element</figcaption>
+                </figure>
               </div>
             </div>
-            <div className={styles.projectItem}>
-              <Image src={profilePic} alt="Project image" className={styles.projectImg} />
-              <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>projectTitle</h3>
-                <p className={styles.projectDate}>3/3/25</p>
-                <p className={styles.projectDesc}>Description here</p>
+            <div class={styles.projectItem}>
+            <div class={styles.projectItemText}>
+                <h3>Discord Bot using NodeJS</h3>
+                <p>Originally made in Python, this is an automated response bot that responds to a specific list
+                  of commands typed in my Discord server. I converted it to NodeJS after the Python library I
+                  was using was no longer supported. I also came back and made some changes in January 2025.
+                  It can take parameters after certain commands and also stores a list of statistics based on
+                  command usage!</p>
+                <p class={styles.projectItemDate}>04/03/2023</p>
+                <p class={styles.projectItemLink}><a href="#" title="Not currently available">Link to Github repo</a>
+                </p>
+              </div>
+              <div class={styles.projectItemImg}>
+                <figure>
+                  <Image src={techImg[1]} alt="Thumbnail image" width={100} height={100}/>
+                    <figcaption>Figure 2: Example of bot response</figcaption>
+                </figure>
               </div>
             </div>
-            <div className={styles.projectItem}>
-              <Image src={profilePic} alt="Project image" className={styles.projectImg} />
-              <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>projectTitle</h3>
-                <p className={styles.projectDate}>3/3/25</p>
-                <p className={styles.projectDesc}>Description here</p>
+            <div class={styles.projectItem}>
+            <div class={styles.projectItemText}>
+                <h3>Python Turtle Graphics Generation</h3>
+                <p>In this project, I generated a collection of graphics using mathematical formulas and the
+                  built-in Python library called &apos;turtle&apos;.</p>
+                <p>This was one of the first projects I made when I began Python programming in 2019/2020.</p>
+                <p class={styles.projectItemDate}>25/05/2020</p>
+                <p class={styles.projectItemLink}><a href="https://github.com/Amelithic/-ARCHIVE-Python-Projects">Link
+                  to Github repo</a></p>
+              </div>
+              <div class={styles.projectItemImg}>
+                <figure>
+                  <Image src={techImg[2]} alt="Thumbnail image" width={100} height={100}/>
+                    <figcaption>Figure 3: Python Turtle Graphics</figcaption>
+                </figure>
               </div>
             </div>
           </div>
