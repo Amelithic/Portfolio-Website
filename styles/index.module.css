@@ -63,7 +63,7 @@ section#hero {
     margin:auto;
     padding:auto;
 
-    background: url("../public/images/portrait.jpg");
+    background: url("../public/images/tech-1.png");
     background-size: cover; 
     background-repeat: no-repeat;
     background-position-y: -20pt;
