@@ -152,6 +152,7 @@ const Index = ({ posts, globalData, initialCareerIndex, initialCareerTitle, init
         <section className={styles.indexItems}>
           <p>section 2: skills</p>
           <p>section 4: blog</p>
+          <Link href='../public/PDFs/Technical Portfolio Brochure.pdf' title='Technical Portfolio Brochure'>Link to my tech-related portfolio</Link>
         </section>
 
         <section className={styles.indexItems}>
