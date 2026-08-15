@@ -1,0 +1,13 @@
+export function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+}
+
+export function countWords(text: string): number {
+  const matches = text.trim().match(/\S+/g)
+  return matches ? matches.length : 0
+}
+
+export function readingTime(text: string, wordsPerMinute = 200): string {
+  const minutes = Math.max(1, Math.round(countWords(text) / wordsPerMinute))
+  return `${minutes} min read`
+}
