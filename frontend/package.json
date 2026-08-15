@@ -1,0 +1,32 @@
+{
+  "name": "portfolio-vue",
+  "description": "Portfolio website refactored with Vue 3, TypeScript, Vite, and ESLint",
+  "productName": "Portfolio Website",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "lint": "eslint . --fix",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc -b --force"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "typescript": "^5.7.3",
+    "vue": "^3.5.12",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/parser": "^8.67.0",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vue/tsconfig": "^0.6.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.29.0",
+    "vite": "^6.2.0",
+    "vue-tsc": "^3.3.10"
+  }
+}
