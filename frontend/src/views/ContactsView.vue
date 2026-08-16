@@ -16,27 +16,31 @@ import { siteCopy } from '@/content/siteCopy'
     <div class="container contacts-body">
       <h2>{{ siteCopy.contacts.socialsHeading }}</h2>
       <ul class="contacts-grid">
-        <li v-for="social in siteCopy.contacts.socials" :key="social.label" class="contacts-card">
-          <div class="contacts-card-icon">
-            <i :class="['ph', social.icon]" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3>{{ social.label }}</h3>
-            <p>{{ social.note }}</p>
-          </div>
+        <li v-for="social in siteCopy.contacts.socials" :key="social.label">
+          <a :href="social.to" class="contacts-card" :aria-label="social.label">
+            <div class="contacts-card-icon">
+              <i :class="['ph', social.icon]" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>{{ social.label }}</h3>
+              <p>{{ social.note }}</p>
+            </div>
+          </a>
         </li>
       </ul>
 
       <h2>{{ siteCopy.contacts.platformsHeading }}</h2>
       <ul class="contacts-grid">
-        <li v-for="platform in siteCopy.contacts.platforms" :key="platform.label" class="contacts-card">
-          <div class="contacts-card-icon">
-            <i :class="['ph', platform.icon]" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3>{{ platform.label }}</h3>
-            <p>{{ platform.note }}</p>
-          </div>
+        <li v-for="platform in siteCopy.contacts.platforms" :key="platform.label">
+          <a :href="platform.to" class="contacts-card" :aria-label="platform.label">
+            <div class="contacts-card-icon">
+              <i :class="['ph', platform.icon]" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>{{ platform.label }}</h3>
+              <p>{{ platform.note }}</p>
+            </div>
+          </a>
         </li>
       </ul>
     </div>
@@ -82,6 +86,8 @@ import { siteCopy } from '@/content/siteCopy'
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
+  color: inherit;
+  text-decoration: none;
   transition:
     border-color var(--transition-fast),
     transform var(--transition-fast),

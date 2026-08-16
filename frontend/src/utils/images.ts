@@ -1,9 +1,7 @@
 export const pageImages = {
-  homeHero: '/images/page/home-hero.webp',
-  homeIntro: '/images/page/home-intro.webp',
-  aboutBeginning: '/images/page/about-beginning.webp',
-  aboutDesignCode: '/images/page/about-design-code.webp',
-  aboutBeyondScreen: '/images/page/about-beyond-screen.webp',
+  homeHero: '/images/page/home/home-hero.webp',
+  homeIntro: '/images/page/home/home-intro.webp',
+  homeBackground: '/images/page/home/home-hero.webp',
   blogHero: '/images/page/blog-hero.webp',
   projectsHero: '/images/page/projects-hero.webp',
 } as const

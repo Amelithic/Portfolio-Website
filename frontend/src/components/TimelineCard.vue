@@ -42,9 +42,15 @@ const expanded = ref(false)
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  overflow: visible;
   transition:
     border-color var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition),
+    border-radius var(--transition);
+}
+
+.timeline-card.is-expanded {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .timeline-card:hover,
@@ -77,21 +83,42 @@ const expanded = ref(false)
 }
 
 .timeline-description {
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 100%;
+  padding: var(--space-md) var(--space-lg);
   max-height: 0;
-  margin-top: 0;
   overflow: hidden;
   font-size: 0.86rem;
   color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   opacity: 0;
   transition:
     max-height var(--transition),
-    margin-top var(--transition),
     opacity var(--transition);
 }
 
 .timeline-card.is-expanded .timeline-description {
   max-height: 8rem;
-  margin-top: 0.4rem;
   opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .timeline-description {
+    position: static;
+    margin-top: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    opacity: 0;
+  }
+
+  .timeline-card.is-expanded .timeline-description {
+    max-height: 8rem;
+    opacity: 1;
+  }
 }
 </style>

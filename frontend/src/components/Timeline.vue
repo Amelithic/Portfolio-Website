@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .timeline {
   position: relative;
-  max-width: 920px;
+  max-width: 1100px;
   margin-inline: auto;
 }
 
@@ -139,7 +139,8 @@ onBeforeUnmount(() => {
 }
 
 .timeline-item {
-  max-width: 400px;
+  width: 90%;
+  max-width: 500px;
   justify-self: center;
 }
 
@@ -164,8 +165,9 @@ onBeforeUnmount(() => {
   }
 
   .timeline-item {
-    max-width: none;
+    width: calc(100% - 1.75rem);
     margin-left: 1.75rem;
+    margin-bottom: var(--space-lg);
   }
 
   .timeline::before {
@@ -186,7 +188,7 @@ onBeforeUnmount(() => {
     width: 0.7rem;
     height: 0.7rem;
     margin-left: -0.35rem;
-    border: 2px solid var(--color-bg);
+    border: none;
     border-radius: var(--radius-full);
     background: var(--color-accent);
   }

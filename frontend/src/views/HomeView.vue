@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import Section from '@/components/Section.vue'
 import CardList from '@/components/CardList.vue'
 import Carousel from '@/components/Carousel.vue'
@@ -15,10 +16,25 @@ import { getImageUrl } from '@/utils/images'
 const projects = getPinnedProjects()
 const posts = getLatestPosts(5)
 const experiences = getTimelineExperiences()
+
+const bgReady = ref(false)
+
+onMounted(() => {
+  const img = new Image()
+  img.onload = () => { bgReady.value = true }
+  img.src = getImageUrl('homeBackground')
+})
 </script>
 
 <template>
-  <div>
+  <div class="home">
+    <img
+      v-if="bgReady"
+      :src="getImageUrl('homeBackground')"
+      alt=""
+      class="home-bg"
+      aria-hidden="true"
+    />
     <section class="hero">
       <div class="hero-media" aria-hidden="true">
         <PlaceholderMedia :src="getImageUrl('homeHero')" icon="ph-brackets-curly" height="100%" loading="eager"
@@ -103,6 +119,45 @@ const experiences = getTimelineExperiences()
 </template>
 
 <style scoped>
+.home {
+  position: relative;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  background:
+    radial-gradient(70% 50% at 10% 8%, rgba(167, 139, 250, 0.28), transparent 55%),
+    radial-gradient(60% 40% at 80% 25%, rgba(99, 102, 241, 0.24), transparent 50%),
+    radial-gradient(65% 45% at 25% 55%, rgba(56, 189, 248, 0.20), transparent 50%),
+    radial-gradient(50% 35% at 70% 80%, rgba(45, 212, 191, 0.18), transparent 50%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home > section {
+  position: relative;
+  z-index: 1;
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -137,7 +192,7 @@ const experiences = getTimelineExperiences()
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: var(--hero-overlay);
+  background: linear-gradient(to right, rgba(11, 9, 22, 0.92) 0%, rgba(11, 9, 22, 0.6) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -183,6 +238,7 @@ const experiences = getTimelineExperiences()
   flex-direction: column;
   gap: var(--space-md);
   z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .hero-social {
@@ -191,18 +247,16 @@ const experiences = getTimelineExperiences()
   justify-content: center;
   width: 2.6rem;
   height: 2.6rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius-sm);
-  color: var(--color-text-muted);
+  color: #ffffff;
   transition:
-    color var(--transition-fast),
-    border-color var(--transition-fast),
+    background var(--transition-fast),
     transform var(--transition-fast);
 }
 
 .hero-social:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
 
@@ -274,5 +328,23 @@ const experiences = getTimelineExperiences()
   .intro-grid {
     grid-template-columns: 1fr 1.2fr;
   }
+}
+</style>
+
+<style>
+[data-theme='light'] .hero-overlay {
+  background: linear-gradient(to right, rgba(246, 244, 252, 0.92) 0%, rgba(246, 244, 252, 0.6) 40%, transparent 70%);
+}
+
+[data-theme='light'] .home::before {
+  background:
+    radial-gradient(70% 50% at 10% 8%, rgba(139, 92, 246, 0.18), transparent 55%),
+    radial-gradient(60% 40% at 80% 25%, rgba(79, 70, 229, 0.16), transparent 50%),
+    radial-gradient(65% 45% at 25% 55%, rgba(14, 165, 233, 0.14), transparent 50%),
+    radial-gradient(50% 35% at 70% 80%, rgba(20, 184, 166, 0.12), transparent 50%);
+}
+
+[data-theme='light'] .home-bg {
+  opacity: 0.12;
 }
 </style>

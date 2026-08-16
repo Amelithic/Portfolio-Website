@@ -39,8 +39,8 @@ function scrollBy(direction: number): void {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding-bottom: 6px;
-  margin-bottom: -6px;
+  padding: 8px 0 20px;
+  margin: -8px 0 -20px;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -50,6 +50,7 @@ function scrollBy(direction: number): void {
 .carousel-track > :deep(*) {
   flex: 0 0 auto;
   width: min(320px, 86vw);
+  height: auto;
   scroll-snap-align: start;
 }
 
