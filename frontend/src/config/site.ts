@@ -1,6 +1,6 @@
 export const siteConfig = {
-  brandName: 'AMELIE',
+  brandName: 'AMELITHIC',
   defaultTheme: 'dark',
-  siteTitle: 'AMELIE — Portfolio',
+  siteTitle: 'AMELTHIC — Portfolio',
   siteDescription: 'Personal portfolio website with a blog and project gallery.',
 } as const

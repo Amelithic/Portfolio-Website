@@ -5,20 +5,24 @@ import Carousel from '@/components/Carousel.vue'
 import PlaceholderMedia from '@/components/PlaceholderMedia.vue'
 import ProjectCard from '@/projects/components/ProjectCard.vue'
 import BlogPostCard from '@/blog/components/BlogPostCard.vue'
+import Timeline from '@/components/Timeline.vue'
 import { getPinnedProjects } from '@/projects'
 import { getLatestPosts } from '@/blog'
+import { getTimelineExperiences } from '@/content/experiences'
 import { siteCopy } from '@/content/siteCopy'
 import { getImageUrl } from '@/utils/images'
 
 const projects = getPinnedProjects()
 const posts = getLatestPosts(5)
+const experiences = getTimelineExperiences()
 </script>
 
 <template>
   <div>
     <section class="hero">
       <div class="hero-media" aria-hidden="true">
-        <PlaceholderMedia :src="getImageUrl('homeHero')" icon="ph-brackets-curly" height="100%" loading="eager" alt="" />
+        <PlaceholderMedia :src="getImageUrl('homeHero')" icon="ph-brackets-curly" height="100%" loading="eager"
+          alt="" />
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-inner">
@@ -37,13 +41,8 @@ const posts = getLatestPosts(5)
           </div>
         </div>
         <div class="hero-socials">
-          <a
-            v-for="social in siteCopy.socials"
-            :key="social.label"
-            :href="social.to"
-            class="hero-social"
-            :aria-label="social.label"
-          >
+          <a v-for="social in siteCopy.socials" :key="social.label" :href="social.to" class="hero-social"
+            :aria-label="social.label">
             <i :class="['ph', social.icon]" aria-hidden="true"></i>
           </a>
         </div>
@@ -56,7 +55,8 @@ const posts = getLatestPosts(5)
           <PlaceholderMedia :src="getImageUrl('homeIntro')" icon="ph-code" :label="siteCopy.mediaLabels.about" />
         </div>
         <div class="intro-copy">
-          <p v-for="paragraph in siteCopy.home.intro.paragraphs" :key="paragraph">
+          <p v-for="(paragraph, index) in siteCopy.home.intro.paragraphs" :key="paragraph"
+            :class="{ 'is-first': index === 0 }">
             {{ paragraph }}
           </p>
           <RouterLink to="/about" class="btn">
@@ -67,13 +67,13 @@ const posts = getLatestPosts(5)
       </div>
     </Section>
 
-    <Section
-      id="projects"
-      :heading="siteCopy.home.projectsSection.heading"
-      :subheading="siteCopy.home.projectsSection.subheading"
-      action-to="/projects"
-      :action-label="siteCopy.ui.seeMore"
-    >
+    <Section id="timeline" :heading="siteCopy.home.timelineSection.heading"
+      :subheading="siteCopy.home.timelineSection.subheading">
+      <Timeline :items="experiences" />
+    </Section>
+
+    <Section id="projects" :heading="siteCopy.home.projectsSection.heading"
+      :subheading="siteCopy.home.projectsSection.subheading" action-to="/projects" :action-label="siteCopy.ui.seeMore">
       <CardList :items="projects" variant="large">
         <template #default="{ item }">
           <ProjectCard :project="item" />
@@ -81,13 +81,8 @@ const posts = getLatestPosts(5)
       </CardList>
     </Section>
 
-    <Section
-      id="blog"
-      :heading="siteCopy.home.blogSection.heading"
-      :subheading="siteCopy.home.blogSection.subheading"
-      action-to="/blog"
-      :action-label="siteCopy.ui.seeMore"
-    >
+    <Section id="blog" :heading="siteCopy.home.blogSection.heading" :subheading="siteCopy.home.blogSection.subheading"
+      action-to="/blog" :action-label="siteCopy.ui.seeMore">
       <Carousel :label="siteCopy.home.blogSection.carouselLabel">
         <BlogPostCard v-for="post in posts" :key="post.slug" :post="post" variant="small" />
       </Carousel>
@@ -236,6 +231,10 @@ const posts = getLatestPosts(5)
 
 .intro-copy p {
   color: var(--color-text-muted);
+}
+
+.intro-copy p:first-child {
+  font-weight: 500;
 }
 
 .contact-cta {

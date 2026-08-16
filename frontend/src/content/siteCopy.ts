@@ -1,5 +1,3 @@
-import { siteConfig } from '@/config/site'
-
 export const siteCopy = {
   nav: {
     home: 'Home',
@@ -19,12 +17,13 @@ export const siteCopy = {
     rights: 'All rights reserved, 2026.',
   },
   socials: [
-    { label: 'GitHub', to: '/contacts', icon: 'ph-github-logo' },
-    { label: 'LinkedIn', to: '/contacts', icon: 'ph-linkedin-logo' },
-    { label: 'Email', to: '/contacts', icon: 'ph-envelope-simple' },
+    { label: 'GitHub', to: 'https://github.com/Amelithic', icon: 'ph-github-logo' },
+    { label: 'LinkedIn', to: 'https://www.linkedin.com/in/amelie-mccarthy/', icon: 'ph-linkedin-logo' },
+    { label: 'Email', to: 'mailto:amelithic@gmail.com', icon: 'ph-envelope-simple' },
   ],
   ui: {
     seeMore: 'See more',
+    seeLess: 'See less',
     pinned: 'Pinned',
     filteringBy: 'Filtering by',
     all: 'All',
@@ -33,22 +32,27 @@ export const siteCopy = {
   },
   home: {
     hero: {
-      eyebrow: 'Welcome to my corner of the web',
+      eyebrow: 'Welcome to my portfolio website',
       greeting: "Hello, I'm",
-      name: siteConfig.brandName,
-      tagline: 'I build for the web.',
-      sub: 'I design and build minimal, modern experiences — from clean interfaces to full applications, and I write about the process along the way.',
+      name: "Amélie",
+      tagline: 'I love creating and learning.',
+      sub: 'I design and build projects across all areas of STEAM - from small experiments to larger projects, and I write about the process along the way.',
       viewProjects: 'View Projects',
       aboutMe: 'About Me',
     },
     intro: {
       heading: 'A little about me',
-      subheading: 'Code, design, and everything between.',
+      subheading: 'Code, design, art, and everything between.',
       paragraphs: [
-        "I'm a developer and designer who enjoys turning ideas into things people actually use. My work lives where thoughtful design meets clean code.",
+        "I'm an Immersive Software Engineering student who enjoys turning ideas into real-life creations :)",
+        "With a love for both the technical and the artistic, my work lives where creativity meets technology.",
         'This site is my home on the internet: a portfolio of projects, a blog of learnings, and a place to reach me.',
       ],
       goToAbout: 'Go to About Me',
+    },
+    timelineSection: {
+      heading: 'Timeline',
+      subheading: 'Work, study, and everything in between.',
     },
     projectsSection: {
       heading: 'Projects',
