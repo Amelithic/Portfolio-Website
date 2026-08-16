@@ -1,0 +1,59 @@
+name: Enforce Branch Naming
+
+on:   
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch naming
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+
+          FEAT_REGEX="^feat\/.+$"
+          TEST_REGEX="^test(\/.*)?$"
+          BUGFIX_REGEX="^bugfix\/.+$"
+          HOTFIX_REGEX="^hotfix\/.+$"
+          FIX_REGEX="^fix\/.+$"
+          FEATURE_REGEX="^feature\/.+$"
+
+          if [[ "$BRANCH_NAME" =~ $FEAT_REGEX ]]; then
+            echo "✔ Valid feat branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          if [[ "$BRANCH_NAME" =~ $TEST_REGEX ]]; then
+            echo "✔ Valid test branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          if [[ "$BRANCH_NAME" =~ $BUGFIX_REGEX ]]; then
+            echo "✔ Valid bugfix branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          if [[ "$BRANCH_NAME" =~ $HOTFIX_REGEX ]]; then
+            echo "✔ Valid hotfix branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          if [[ "$BRANCH_NAME" =~ $FIX_REGEX ]]; then
+            echo "✔ Valid fix branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          if [[ "$BRANCH_NAME" =~ $FEATURE_REGEX ]]; then
+            echo "✔ Valid feature branch: $BRANCH_NAME"
+            exit 0
+          fi
+
+          echo "❌ Invalid branch name: $BRANCH_NAME"
+          echo "Allowed patterns:"
+          echo "  - feat/<something> or feature/<something>"
+          echo "  - test or test/<anything>"
+          echo "  - fix/<something> or bugfix/<something>"
+          echo "  - hotfix/<something>"
+          exit 1
