@@ -1,5 +1,29 @@
-import type { BlogPost } from '@/content/types/BlogPost'
-import { blogPosts } from '@/content/blog'
+import type { Component } from 'vue'
+import type { BlogPost, BlogFrontmatter } from '@/content/types/BlogPost'
+import wordCounts from '@/content/blog/word-counts.json'
+
+interface BlogModule {
+  default: Component
+  frontmatter: BlogFrontmatter
+}
+
+const mdxModules = import.meta.glob<BlogModule>('@/content/blog/*.mdx', { eager: true })
+
+function slugFromPath(path: string): string {
+  return path.split('/').pop()?.replace(/\.mdx$/, '') ?? ''
+}
+
+const blogPosts: BlogPost[] = Object.entries(mdxModules).map(([path, mod]) => {
+  const slug = slugFromPath(path)
+  const counts = wordCounts[slug as keyof typeof wordCounts]
+  return {
+    ...mod.frontmatter,
+    slug,
+    contentFile: path,
+    wordCount: counts?.wordCount ?? 0,
+    readingTime: counts?.readingTime ?? '1 min read',
+  }
+})
 
 export function getAllPosts(): BlogPost[] {
   return blogPosts
@@ -36,7 +60,7 @@ export function filterPosts(options: { search?: string; category?: string } = {}
   return blogPosts.filter((post) => {
     const matchesCategory = category ? post.tags.includes(category) : true
     const matchesSearch = query
-      ? `${post.title} ${post.description} ${post.content} ${post.tags.join(' ')}`
+      ? `${post.title} ${post.description} ${post.tags.join(' ')}`
           .toLowerCase()
           .includes(query)
       : true

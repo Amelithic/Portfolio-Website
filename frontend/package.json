@@ -5,6 +5,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "node ../scripts/compute-word-counts.mjs",
+    "predev": "node ../scripts/compute-word-counts.mjs",
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "images": "node scripts/optimize-images.mjs",
@@ -13,7 +15,14 @@
     "typecheck": "vue-tsc -b --force"
   },
   "dependencies": {
+    "@mdx-js/rollup": "^3.1.1",
+    "@shikijs/rehype": "^4.4.3",
+    "@types/mdx": "^2.0.14",
     "express": "^5.2.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "shiki": "^4.4.3",
     "typescript": "^5.7.3",
     "vue": "^3.5.12",
     "vue-router": "^4.6.4"
