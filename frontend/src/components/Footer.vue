@@ -43,7 +43,7 @@ const contactLinks = siteCopy.socials
           <h4>{{ siteCopy.footer.contacts }}</h4>
           <ul>
             <li v-for="contact in contactLinks" :key="contact.label">
-              <a :href="contact.to" class="footer-social" :aria-label="contact-label">
+              <a :href="contact.to" class="footer-social" :aria-label="contact.label">
                 <i :class="['ph', contact.icon]" aria-hidden="true"></i>
                 {{ contact.label }}
               </a>
