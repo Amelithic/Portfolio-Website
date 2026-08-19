@@ -1,0 +1,17 @@
+---
+title: "From Markdown to Blog Post"
+description: "The content pipeline behind this site, and the plan to upgrade it from plain text to full markdown."
+category: Development
+tags:
+  - markdown
+  - content
+  - writing
+datePublished: "2026-03-25"
+banner: /images/blog/from-markdown-to-blog.webp
+---
+
+Writing in markdown feels natural, so it was only a matter of time before this blog started consuming markdown files directly.
+
+Right now posts are typed objects with plain text content, which is perfect for a foundation. The next step is a parser that converts markdown into styled HTML, plus a schema to validate every post against the same shape.
+
+That keeps the editorial workflow in plain files while the rendering stays flexible. If a future backend appears, the typed service layer will slot right in without touching the components.

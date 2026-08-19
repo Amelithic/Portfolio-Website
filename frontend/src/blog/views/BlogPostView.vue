@@ -1,16 +1,32 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import PlaceholderMedia from '@/components/PlaceholderMedia.vue'
 import Tag from '@/components/Tag.vue'
 import BlogDirNavigation from '@/blog/components/BlogDirNavigation.vue'
 import { getPostBySlug } from '@/blog'
-import { countWords, formatDate, readingTime } from '@/utils/format'
+import { formatDate } from '@/utils/format'
 import { siteCopy } from '@/content/siteCopy'
+
+interface BlogMdxModule {
+  default: Component
+  frontmatter: Record<string, unknown>
+}
+
+const mdxModules = import.meta.glob<BlogMdxModule>('@/content/blog/*.mdx', { eager: true })
+
+function getMdxComponent(slug: string): Component | null {
+  const entry = Object.entries(mdxModules).find(([path]) =>
+    path.includes(`${slug}.mdx`),
+  )
+  return entry ? entry[1].default : null
+}
 
 const route = useRoute()
 
 const post = computed(() => getPostBySlug(String(route.params.slug)))
+const PostContent = computed(() => (post.value ? getMdxComponent(post.value.slug) : null))
 </script>
 
 <template>
@@ -35,11 +51,11 @@ const post = computed(() => getPostBySlug(String(route.params.slug)))
             </span>
             <span>
               <i class="ph ph-text-align-left" aria-hidden="true"></i>
-              {{ countWords(post.content) }} {{ siteCopy.post.words }}
+              {{ post.wordCount }} {{ siteCopy.post.words }}
             </span>
             <span>
               <i class="ph ph-clock" aria-hidden="true"></i>
-              {{ readingTime(post.content) }}
+              {{ post.readingTime }}
             </span>
             <span>
               <i class="ph ph-folder-simple" aria-hidden="true"></i>
@@ -51,9 +67,7 @@ const post = computed(() => getPostBySlug(String(route.params.slug)))
         <div class="post-divider" role="separator"></div>
 
         <div class="post-content rich-text">
-          <p v-for="(paragraph, index) in post.content.split(/\n\n+/)" :key="index">
-            {{ paragraph }}
-          </p>
+          <component :is="PostContent" v-if="PostContent" />
         </div>
 
         <footer class="post-footer">
@@ -147,7 +161,6 @@ const post = computed(() => getPostBySlug(String(route.params.slug)))
 }
 
 .post-content p {
-  white-space: pre-line;
   color: var(--color-text-muted);
 }
 

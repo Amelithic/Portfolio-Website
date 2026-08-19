@@ -1,0 +1,188 @@
+---
+title: "MDX in Action: A Component-Powered Blog"
+description: "A hands-on demo of what MDX enables — embedded photos, videos, code blocks, tables, custom components, and cross-post links."
+category: Development
+tags:
+  - mdx
+  - vue
+  - demo
+  - components
+datePublished: "2026-05-01"
+banner: /images/blog/from-markdown-to-blog.webp
+---
+
+import Callout from '@/components/mdx/Callout.vue'
+import PhotoFigure from '@/components/mdx/PhotoFigure.vue'
+import VideoEmbed from '@/components/mdx/VideoEmbed.vue'
+import BlogPostLink from '@/components/mdx/BlogPostLink.vue'
+
+This post is a live demo of what MDX enables. Everything here — the photos, the video, the code blocks, the tables, and the custom widgets — is written in a single `.mdx` file using standard markdown plus Vue components.
+
+---
+
+## Standard Markdown
+
+MDX supports all standard markdown syntax. You can write **bold**, *italic*, ***bold italic***, `inline code`, and [links](/blog) just like you would in any markdown file.
+
+You can also use <u>underline</u> with the HTML tag, ~~strikethrough~~ with tildes (thanks to remark-gfm), and combine them like **bold and ~~struck~~** in the same line.
+
+### Line Breaks
+
+Line breaks work naturally between paragraphs — just leave a blank line.<br/>
+You can also force a break mid-paragraph with the HTML `<br />` tag when you need precise control over layout, like separating items in a compact block.
+
+#### Sub-headings
+
+Every heading level from `#` to `######` is supported. The demo uses `##` for top sections, `###` for sub-sections, and `####` for nested examples like this one.
+
+##### Deep Nesting
+
+Even heading level 5 works, though you would rarely need it. The `.rich-text` class styles all heading levels with consistent spacing and typography.
+
+### Fenced Code Blocks
+
+Code blocks render with syntax highlighting powered by Shiki. Here is a small TypeScript example:
+
+```ts
+interface BlogPost {
+  slug: string
+  title: string
+  description: string
+  tags: string[]
+  datePublished: string
+}
+
+function getPostBySlug(posts: BlogPost[], slug: string): BlogPost | undefined {
+  return posts.find((post) => post.slug === slug)
+}
+```
+
+You can also write inline code within paragraphs, like `import.meta.glob` or `Array.find()`, and it renders with the same monospace treatment.
+
+### Tables
+
+Markdown tables render cleanly inside the rich-text container:
+
+| Feature | Plain Markdown | MDX |
+|---------|---------------|-----|
+| Paragraphs | Yes | Yes |
+| Code blocks | Yes | Yes |
+| Vue components | No | Yes |
+| Interactive widgets | No | Yes |
+| Dynamic data binding | No | Yes |
+
+### Blockquotes
+
+> Writing in markdown feels natural, so it was only a matter of time before this blog started consuming markdown files directly.
+
+## Embedded Photos
+
+The `PhotoFigure` component wraps an image with an optional caption. It handles responsive sizing, rounded corners, and consistent borders automatically.
+
+<PhotoFigure
+  src="/images/blog/hello-world.webp"
+  alt="Blog artwork showing a welcome scene"
+  caption="A banner image rendered through a dedicated Vue component with caption support."
+/>
+
+You can use it anywhere in your post — between paragraphs, inside sections, or as a standalone visual break.
+
+## Embedded Video
+
+The `VideoEmbed` component creates a responsive 16:9 iframe that works with YouTube, Vimeo, and other embed-friendly platforms.
+
+<VideoEmbed
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+  title="Example video embed"
+/>
+
+The component handles the aspect ratio, responsive sizing, and fullscreen support so you just pass the embed URL.
+
+## Code Snippets
+
+Beyond fenced code blocks, MDX lets you highlight specific patterns. Here is a Vue component example that you could embed directly in a post:
+
+```vue
+<script setup lang="ts">
+const props = defineProps<{ title: string }>()
+</script>
+
+<template>
+  <h2>{{ title }}</h2>
+  <p>This component is rendered inside a blog post.</p>
+</template>
+```
+
+And here is some CSS for styling MDX content:
+
+```css
+.post-content h2 {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  color: var(--color-text);
+}
+
+.post-content p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+```
+
+Shiki supports over 200 languages out of the box — TypeScript, Vue, CSS, Python, Rust, Go, and many more. The language is specified after the opening backticks: ` ```ts `, ` ```vue `, ` ```css `.
+
+## Custom Components
+
+### Callout Boxes
+
+The `Callout` component supports three variants for different types of information. Each variant has a pastel overlay background that works in both dark and light mode:
+
+<Callout variant="info">
+  This is an informational callout. Use it to provide context, background, or supplementary details that help the reader understand the topic better.
+</Callout>
+
+<Callout variant="warning">
+  This is a warning callout. Use it to flag gotchas, breaking changes, or common mistakes that readers should watch out for.
+</Callout>
+
+<Callout variant="tip">
+  This is a tip callout. Use it to share best practices, shortcuts, or advice that makes the reader's workflow easier.
+</Callout>
+
+Each variant has its own colour scheme and icon, and they all inherit the site's theme tokens so they look consistent in both dark and light mode.
+
+## Lists and Structure
+
+MDX handles all list types naturally:
+
+1. Ordered lists work with automatic numbering
+2. Nesting is supported for sub-items
+3. Mixed content inside list items is fine
+
+Unordered lists use the standard markdown syntax:
+
+- First item with some detail
+- Second item with more information
+- Third item wrapping up the point
+
+## Cross-Post Linking
+
+The `BlogPostLink` component creates an inline card that links to another post on the blog. It pulls the title and description from the target post and renders a compact, styled link.
+
+<BlogPostLink
+  slug="hello-world"
+  title="Hello, World!"
+  description="The first post on this blog. A short introduction to what I do and what I will be writing about."
+/>
+
+This is useful for creating reading paths through your content — linking related posts together so readers can explore a topic more deeply without leaving the article.
+
+## What This Enables
+
+With MDX, each blog post becomes a full Vue component at build time. That means:
+
+- You can import and use **any Vue component** in your posts
+- Components receive **props** and can be **interactive**
+- Content stays in **plain text files** that are easy to edit and version control
+- The build pipeline handles **compilation, bundling, and optimisation** automatically
+
+The same system that renders a simple paragraph also renders a photo gallery, an interactive demo, or a data visualisation — all from a single `.mdx` file.
