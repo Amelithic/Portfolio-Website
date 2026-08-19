@@ -19,7 +19,7 @@ export const siteCopy = {
   socials: [
     { label: 'GitHub', to: 'https://github.com/Amelithic', icon: 'ph-github-logo' },
     { label: 'LinkedIn', to: 'https://www.linkedin.com/in/amelie-mccarthy/', icon: 'ph-linkedin-logo' },
-    { label: 'Email', to: 'mailto:amelie.main.business@gmail.com', icon: 'ph-envelope-simple' },
+    { label: 'Email', to: 'mailto:amelie@amelithic.com', icon: 'ph-envelope-simple' },
   ],
   ui: {
     seeMore: 'See more',
@@ -125,7 +125,7 @@ export const siteCopy = {
     socials: [
       { label: 'GitHub', to: 'https://github.com/Amelithic', icon: 'ph-github-logo', note: 'Code and repositories' },
       { label: 'LinkedIn', to: 'https://www.linkedin.com/in/amelie-mccarthy/', icon: 'ph-linkedin-logo', note: 'Professional profile' },
-      { label: 'Email', to: 'mailto:amelie.main.business@gmail.com', icon: 'ph-envelope-simple', note: 'Direct contact' },
+      { label: 'Email', to: 'mailto:amelie@amelithic.com', icon: 'ph-envelope-simple', note: 'Direct contact' },
     ],
     platforms: [
       { label: 'Behance', to: 'https://www.behance.net/amelithic', icon: 'ph-behance-logo', note: 'Graphic design' },
