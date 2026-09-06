@@ -1,5 +1,5 @@
 export function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  return new Date(iso).toLocaleDateString('en-IE', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
 export function formatDateRange(start: string, end: string | null): string {

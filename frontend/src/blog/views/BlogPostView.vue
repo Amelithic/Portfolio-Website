@@ -124,13 +124,16 @@ const PostContent = computed(() => (post.value ? getMdxComponent(post.value.slug
   left: 0;
   right: 0;
   bottom: 0;
-  padding: var(--space-xl);
+  padding-inline: var(--space-3xl);
+  padding-block: var(--space-xl);
 }
 
 .post-title-wrap h1 {
   color: #ffffff;
   max-width: 24ch;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
 }
+
 
 .post-details {
   display: flex;
@@ -157,7 +160,8 @@ const PostContent = computed(() => (post.value ? getMdxComponent(post.value.slug
 }
 
 .post-content {
-  padding: var(--space-xl);
+  padding-block: var(--space-2xl);
+  padding-inline: var(--space-3xl);
 }
 
 .post-content p {
@@ -165,7 +169,7 @@ const PostContent = computed(() => (post.value ? getMdxComponent(post.value.slug
 }
 
 .post-footer {
-  padding: 0 var(--space-xl) var(--space-xl);
+  padding: 0 var(--space-3xl) var(--space-3xl);
 }
 
 .post-tags {
@@ -188,11 +192,12 @@ const PostContent = computed(() => (post.value ? getMdxComponent(post.value.slug
 
 @media (min-width: 900px) {
   .post-content {
-    padding: var(--space-2xl);
+    padding-inline: var(--space-4xl);
   }
 
   .post-title-wrap {
-    padding: var(--space-2xl);
+    padding-inline: var(--space-4xl);
+    padding-block: var(--space-2xl);
   }
 }
 </style>
