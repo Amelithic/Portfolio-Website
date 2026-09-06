@@ -1,10 +1,24 @@
 <script setup lang="ts">
-defineProps<{ src: string; alt: string; caption?: string }>()
+defineProps<{
+  src: string
+  alt: string
+  caption?: string
+  width?: string | number
+  height?: string | number
+}>()
 </script>
 
 <template>
   <figure class="photo-figure">
-    <img :src="src" :alt="alt" loading="lazy" />
+    <img
+      :src="src"
+      :alt="alt"
+      loading="lazy"
+      :style="{
+        width: width ?? '100%',
+        height: height ?? 'auto'
+      }"
+    />
     <figcaption v-if="caption" class="photo-caption">{{ caption }}</figcaption>
   </figure>
 </template>
@@ -12,10 +26,12 @@ defineProps<{ src: string; alt: string; caption?: string }>()
 <style scoped>
 .photo-figure {
   margin: 1.5rem 0;
+  text-align: center; /* centers inline images */
 }
 
 .photo-figure img {
-  width: 100%;
+  display: block;
+  margin: 0 auto; /* centers the image itself */
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
 }

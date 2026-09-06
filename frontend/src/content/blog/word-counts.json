@@ -1,30 +1,22 @@
 {
-  "deploying-to-netlify": {
-    "wordCount": 63,
+  "batch-mini-programs": {
+    "wordCount": 1,
     "readingTime": "1 min read"
   },
-  "designing-with-space-purple": {
-    "wordCount": 110,
-    "readingTime": "1 min read"
-  },
-  "from-markdown-to-blog": {
-    "wordCount": 90,
-    "readingTime": "1 min read"
+  "evolution-of-this-website": {
+    "wordCount": 473,
+    "readingTime": "2 min read"
   },
   "hello-world": {
     "wordCount": 92,
     "readingTime": "1 min read"
   },
+  "learning-rust": {
+    "wordCount": 673,
+    "readingTime": "3 min read"
+  },
   "mdx-in-action": {
     "wordCount": 260,
-    "readingTime": "1 min read"
-  },
-  "setting-up-a-vue3-portfolio": {
-    "wordCount": 102,
-    "readingTime": "1 min read"
-  },
-  "typescript-tips-2026": {
-    "wordCount": 74,
     "readingTime": "1 min read"
   }
 }

@@ -1,0 +1,295 @@
+---
+title: "On Beginning Rust Programming"
+description: "A couple notes on the beginning of my Rust journey."
+category: Development
+tags:
+  - rust
+  - programming
+  - self-teaching
+datePublished: "2026-08-26"
+banner: /images/blog/learning-rust.webp
+---
+import PhotoFigure from '@/components/mdx/PhotoFigure.vue'
+
+**I have began learning Rust, a programming language I've been meaning to explore for a while.** 
+
+And it's been quite refreshing to dive into, coming from the dynamic-typed, higher-level languages like JavaScript, in which I've missed the challenge of stronger typed and stricter languages like my limited C and Java experience. It's been a really good exercise for my brain after work (in which I work primarily in frontend web languages like TypeScript) and especially since I've been trying to learn it without any AI assistance and also allowing myself to deep-dive into any concepts I don't fully get.
+
+A useful resource I've been following has been the official book [The Rust Programming Language](https://doc.rust-lang.org/book/) - I've found it to be quite a good guide for learning Rust and familiarising me with its syntax, core concepts like ownership and borrowing, Cargo for building and package management (basically NPM for Rust), and overall learning about the capabilities of the language.
+I think one thing that surprised me is that Rust is a lot higher-level than I expected - I had the impression it would be very low-level like C, due to its high speed, but it seems to also support much higher-level abstractions while compiling down really efficiently. Comparing it with other languages I'm familiar with, I found a lot of common concepts but some parts stood out, such as my initial confusion whether Rust is or isn't object-oriented, as most of my experience is with OOP languages and it's idea of `trait`, `struct`, and encapsulation resonated, but as I found out it's a multi-paradigm language - it supports functional patterns, but its core abstraction model is often described as 'trait‑oriented' rather than class‑based OOP, as it lacks traditional class inheritance. This concept is something I'd like to explore further, as I have not fully grasped how it works in practise. 
+
+I've found that so far I like a lot of its ideas, such as explicit declaration of whether a variable is mutable or immutable (using `mut` in variable declarations), and distinguishing the idea of immutable variables from constants. I also enjoy the type-checking at compile - it can handle some implicit typing, but ensures you include the type where it needs it. Also the idea of shadowing seems useful, and other small but handy ideas like closures, a specific `loop{}` instead of having to make a `while(true){}` loop (and support for loop labels!) - it's just been a fun and well-thought out language, which is my impression so far, that it handles things cleverly and has a quite fun developer experience :)
+
+<hr></hr>
+## Some mini projects
+**One of the first projects to get my hands on Rust, as they give an example in the book, is a simple number guessing game.**
+
+Admittedly, I was excited to code and delved into the coding without really following the worked example, but went back and looked through it when stuck. But that meant that I ran into problems organically and found my way out through reading and trial-and-error, and also expanded it to learn a bit more about I/O (such as appending to a file), returning Result values, and the magic of propagating up errors with the `?` operator instead of properly error-handling...
+
+```rust
+use std::cmp::Ordering;
+use std::fs::OpenOptions;
+use std::io::{self, Write};
+use std::path::Path;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let path = Path::new("hello.txt");
+    println!("Guess the number!\nInput your guess");
+
+    let secret_number: u32 = rand::random_range(1..=100); //range of 1-100, inclusive
+    let mut guess_count: i32 = 0;
+
+    loop {
+        let mut guess = String::new();
+        io::stdin()
+            .read_line(&mut guess) //place input line into mutable var
+            .expect("Failed to read line!"); //error if fails
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+        println!("You guessed: {guess}");
+        guess_count += 1;
+
+        match guess.cmp(&secret_number) {
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => println!("Too small!"),
+            Ordering::Equal => {
+                println!("You got it in {} guesses!", guess_count);
+                write_or_append(&path, &guess, &guess_count)?;
+                break;
+            }
+        }
+    }
+    
+    //String vs str - test
+    let s = String::from("hello");
+    let _slice: &str = &s[0..2]; // "he" - slice
+
+    Ok(())
+}
+
+fn write_or_append(path: &Path, arg: &u32, count: &i32) -> Result<(), Box<dyn std::error::Error>> {
+    let mut file = OpenOptions::new()
+        .write(true)
+        .append(true)
+        .create(true)
+        .open(path)?;
+    let message = format!("Got correct answer: {arg} -> {count} guesses").to_string();
+    writeln!(file, "{}", message)?;
+    Ok(())
+}
+```
+
+**I also worked on a temperature converter mini project...**
+
+I decided to include emojis ironically as a fun detail, but also wanted to expand how it looked in the terminal so I discovered a library called `inquire`.  I also discovered the concept of 'macros', which are kind of like mini functions to my current understanding, which are called with the `!` to indicate a macro call.
+
+```rust
+use inquire::Select;
+use std::fmt;
+use std::{io, process};
+
+#[derive(Clone)] //allows duplication of this type
+struct Decision {
+    label: &'static str,
+    kind: DecisionKind,
+}
+
+#[derive(Clone)]
+enum DecisionKind {
+    Continue,
+    Change,
+    Exit,
+}
+
+impl fmt::Display for Decision {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.label)
+    }
+} //how to print it as a string, kinda like .toString()?
+
+fn main() {
+    let formats = vec!["Celsius", "Fahrenheit", "Kelvin"];
+    let decisions = vec![
+        Decision {
+            label: "Yep! 😊",
+            kind: DecisionKind::Continue,
+        },
+        Decision {
+            label: "Change options... 🤔",
+            kind: DecisionKind::Change,
+        },
+        Decision {
+            label: "No... ☹️",
+            kind: DecisionKind::Exit,
+        },
+    ];
+
+    let mut choice = prompt_converter_choice(formats.clone());
+    loop {
+        let (input, output) = choice;
+        println!("Selected: {input} -> {output}");
+
+        let continue_check = Select::new("Continue?", decisions.clone())
+            .prompt()
+            .unwrap(); //if success, give value
+
+        match continue_check.kind {
+            DecisionKind::Continue => {
+                clear_screen();
+                println!("Continuing...");
+                conversion(input, output);
+
+                println!("\n\x1b[90mPress Enter to continue...\x1b[0m");
+                let mut _pause = String::new();
+                std::io::stdin().read_line(&mut _pause).unwrap();
+
+                clear_screen();
+            }
+            DecisionKind::Change => {
+                clear_screen();
+                println!("Selecting new options...");
+                choice = prompt_converter_choice(formats.clone());
+            }
+            DecisionKind::Exit => {
+                clear_screen();
+                println!("Exiting...");
+                process::exit(0x1110);
+            }
+        }
+    }
+
+    // println!(
+    //     "🍤 Temperature converter! 🍤\n===========================\nPlease select an option below:"
+    // );
+    // menu();
+
+    // loop {
+    //     let mut input = String::new();
+    //     io::stdin()
+    //         .read_line(&mut input)
+    //         .expect("Failed to read line!");
+    //     let input: u32 = match input.trim().parse() {
+    //         Ok(num) => num,
+    //         Err(_) => {
+    //             println!("Option not recognised, please try again.");
+    //             continue;
+    //         }
+    //     };
+
+    //     match input {
+    //         0 => process::exit(0x1110), // (exit code: 4368)
+    //         1 => fahr_to_cel(),
+    //         2 => cel_to_fahr(),
+    //         3 => kel_to_cel(),
+    //         4 => cel_to_kel(),
+    //         _ => println!("Option not recognised, please try again."),
+    //     }
+    //     println!("\n===========================\nPlease select another option!");
+    //     menu();
+    // }
+}
+
+fn conversion(input_format: &str, output_format: &str) {
+    println!("==============================");
+    println!("   🔧 Conversion Screen 🔧");
+    println!("==============================");
+    println!("Converting {input_format} → {output_format}\n");
+
+    match (input_format, output_format) {
+        ("Fahrenheit", "Celsius") => fahr_to_cel(),
+        ("Celsius", "Fahrenheit") => cel_to_fahr(),
+        ("Kelvin", "Celsius") => kel_to_cel(),
+        ("Celsius", "Kelvin") => cel_to_kel(),
+
+        _ => {
+            println!("🚨❌ Unsupported conversion ❌🚨: {input_format} → {output_format}");
+            println!("Try selecting different formats.");
+        }
+    }
+}
+
+fn fahr_to_cel() {
+    // OLD MANUAL WAY (KEEP EXAMPLE)
+    // let mut input = String::new();
+    // io::stdin()
+    //     .read_line(&mut input)
+    //     .expect("Failed to read line!");
+    // let input: f64 = match input.trim().parse() {
+    //     Ok(num) => num,
+    //     Err(_) => {
+    //         println!("Option not recognised...");
+    //         return;
+    //     }
+    // };
+
+    let input: f64 = inquire::CustomType::new("Enter degrees in Fahrenheit:")
+        .prompt()
+        .unwrap();
+
+    let result: f64 = (input - 32.0) * (5.0 / 9.0);
+
+    println!("Result is: {result:.2}°C");
+}
+
+fn cel_to_fahr() {
+    let input: f64 = inquire::CustomType::new("Enter degrees in Celsius:")
+        .prompt()
+        .unwrap();
+
+    let result: f64 = (input * (9.0 / 5.0)) + 32.0;
+
+    println!("Result is: {result:.2}°F");
+}
+
+fn kel_to_cel() {
+    let input: f64 = inquire::CustomType::new("Enter degrees in Kelvin:")
+        .prompt()
+        .unwrap();
+
+    let result: f64 = input - 273.15;
+
+    println!("Result is: {result:.2}°C");
+}
+
+fn cel_to_kel() {
+    let input: f64 = inquire::CustomType::new("Enter degrees in Celsius:")
+        .prompt()
+        .unwrap();
+
+    let result: f64 = input + 273.15;
+
+    println!("Result is: {result:.2}°K");
+}
+
+fn prompt_converter_choice(formats: Vec<&str>) -> (&str, &str) {
+    let input_format = Select::new("Choose input format: 🤔", formats.clone())
+        .prompt()
+        .unwrap();
+
+    let mut formats = formats.clone();
+    formats.retain(|f| *f != input_format);
+
+    let output_format = Select::new("Choose output format: 😱", formats.clone())
+        .prompt()
+        .unwrap();
+
+    return (input_format, output_format);
+}
+
+fn clear_screen() {
+    print!("\x1B[2J\x1B[H"); //ANSI escape code
+}
+```
+
+<hr></hr>
+## End goal of learning Rust
+Currently, I've been learning Rust with a goal: alongside my portfolio website, which uses MDX for its blog posts, I want to build a custom MDX editor to streamline the creation and editing of posts for my website, to note have to open all of these files in VS Code just to write, while keeping the flexibility of MDX, so that would be a fun project to make :)
+
+<PhotoFigure
+  src="https://media.tenor.com/zC3hSYHpKToAAAAM/shocking-shocked.gif"
+  alt="Shocked expression"
+  width="50"
+  height="100"
+/>

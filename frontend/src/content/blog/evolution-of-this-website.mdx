@@ -1,0 +1,59 @@
+---
+title: "Evolution of this Portfolio Website"
+description: "The different iterations that my portfolio site has gone through up until 2026."
+category: Development
+tags:
+  - vue
+  - next-js
+  - web development
+  - web architecture
+datePublished: "2026-08-20"
+banner: /images/blog/evolution-website-banner.webp
+---
+import PhotoFigure from '@/components/mdx/PhotoFigure.vue'
+
+**This site has been chopped and changed continuously over the past few years, and probably will continue to be...**
+But here is a short description of how it has evolved over the years.
+
+## First Version <i class="ph ph-calendar-dot"></i>
+This was one of the first versions, or at least the first version documented on its GitHub repository. 
+I designed the website in a sketchbook, found a NextJS template (as I wanted to learn NextJS),
+and cluelessly modified it to try and get something that looked right.
+It worked, and the type-writer text effect was fun, but this React-based framework was beyond my experience level so I didn't make progress 
+nor understand how to debug issues, such as the typewriter text creating gibberish when leaving the tab.
+
+
+Needless to say it never got finished, but it helped me outline what pages and layouts I would like to include.
+
+<PhotoFigure
+  src="/images/blog/evolution-first-version.webp"
+  alt="Screenshot of old portfolio website showing a profile picture hero image and a typewriter-inspired text box."
+  caption="My first design, using a NextJS template as a base."
+/>
+
+## Second Version (NEW!) <i class="ph ph-sparkle"></i>
+I have been using Vue.js in my current internship and better understood how it works, and enjoyed its simplicity. 
+Wanting to use it more and gain experience maintaining a Vue site but not having much time to convert by hand, 
+I decided to try using *[OpenCode](https://opencode.ai/)'s Big Pickle* model, and was very impressed by its quality and understanding of my requirements!
+I was able to quickly convert this site over and change a lot around, like themes and add features, 
+and I learned a lot more about the technology in doing so, as well as speeding up development ten fold, 
+which allows me to focus on writing content for my website and documenting projects, 
+instead of spending all my time refactoring a messy project template in a framework I don't know!
+
+It wasn't just a vibe-code however - I want to make this website something that I fully understand, and so before I worked on its implementation, 
+I spent 5-8 hours planning its architecture, project structure, features, sitemaps, wireframes... 
+I got to apply my UI design knowledge to create diagrams, and personal experience and academic experiences to write up an architectural document.
+I research Vue website structures for single page web apps, and how to include the blog and project sections as smaller apps within this web app.
+
+*I came up with something I'm quite happy with for the moment, but there's so much more to expand on in the future...*
+- External handling of content management, such as for images and text, if this site reaches a certain level of use (although unlikely)
+- Creation of a backend, allowing user authentication and possible admin editing features and even more control over my site,
+just from the client side!
+- Integration of mini web projects, such as using my p5.js and Three.js knowledge to embed interesting components and widgets throughout this website! (I already have some ideas!)
+- Smaller details and stylings to make the site more 'me' and stand out!
+
+<PhotoFigure
+  src="/images/blog/evolution-new-version.webp"
+  alt="Screenshot of sleek new portfolio website showing a profile picture hero image and welcome text text."
+  caption="My new re-design / refactor, using Vue.js."
+/>
