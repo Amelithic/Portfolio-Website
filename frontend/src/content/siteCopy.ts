@@ -78,9 +78,7 @@ export const siteCopy = {
         heading: 'The beginning of my tech journey',
         image: '/images/page/about/tech_journey.webp',
         paragraphs: [
-          "My tech journey started with a Tech Kids summer camp when I was 13. We were introduced to the Raspberry Pi, basic Python scripting for Minecraft Education edition, and creating basic HTML pages, and I got hooked - I spent the time asking more and more questions to find the limit to what I could make with these tools, even beyond what the camp tutors could help me with!",
-          "This led to me continuing to build up my knowledge of coding in HTML and Python, then CSS and JS, and many other technologies through self-teaching - all with the goal of someday learning how to make a full website end-to-end.",
-          'Over time I learned more about web and software development, and have become deeply fascinated about pushing the limits of what I can make using these tools!',
+          "change this!"
         ],
       },
       {
@@ -88,10 +86,7 @@ export const siteCopy = {
         heading: 'Art, and other things',
         image: '/images/page/about/art.webp',
         paragraphs: [
-          "Even before I discovered coding, I had a creative streak, with a focus in art. In primary school, I discovered my talent for art, winning 1st place in a local art competition by the age of 12.",
-          "From that point onwards, my art journey was deeply encouraged and I built up my design skills, being asked to create paintings, graphic designs for music albums, and posters for events during my time at primary and secondary school. Notably, I was chosen in my last year of secondary school to assist in creating some street art for my town's skatepark benches, as part of the Waterford Walls project, with two professional street artists. This solidified in my mind the lasting impact I could make with my skills on my community, and the people and places around me.",
-          "Aside from my academic ability, my artwork became the thing I was known best for. However, when the time came to choose my career direction, I was still torn between going towards my artistic side or towards my technical side - which I still continued to build up on the side by exploring computer repair and furthering my web development journey with Python Discord bots and Flask web servers, MySQL databases and basic CRUD web apps!",
-          "And so, I took a year for myself to explore the artistic side - I completed a 1-year post-Leaving Cert course in Art and Graphic Design, having so much fun and passing with full distinctions.",
+          "change this!"
         ],
       },
       {
@@ -99,11 +94,7 @@ export const siteCopy = {
         heading: 'Combining design and code',
         image: '/images/page/about/clarity.webp',
         paragraphs: [
-          "Art and design have always been part of my life, but over time I found myself pulled toward the technical side of things.",
-          "This is where I seeked out a space where creativity and computing overlapped, which led me to study Creative Computing at SETU Waterford for a year. That course blended fundamentals of computing with digital media - UI/UX, graphic design, P5.js, 3D modelling, animation - and it gave me a clearer sense of direction.",
-          "That year taught me a lot. I realised that while I enjoyed design, what really excited me was the challenge and depth of software. I found that my design background gave me a rare and unique perspective in the tech world, where these two aspects often feel separate. And of course, it gave me some fun miscellaneous skills and experiences to aid me in future projects!",
-          "Until this point, I did not realise I could just fully pursue coding - I had just seen it as something I did on the side. Software felt like something I chose for myself, rather than something I happened to be good at. Which is why, during that year, I worked extremely hard to build up a portfolio and put my all into applying for the course I held back on - Immersive Software Engineering (also known as ISE) at the University of Limerick.",
-          "I started ISE in September 2025, and that's what I've been doing ever since!"
+          "change this!"
         ],
       },
       {
